@@ -1,17 +1,18 @@
-from login import user, password
+from time import sleep
+from login import user, password 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
- 
+# start the browser
 driver = webdriver.Chrome('drivers\chromedriver')
 driver.get("https://freebitco.in/?op=home#")
 driver.maximize_window()
-wait_1_min_or = WebDriverWait(driver, 60)
-wait_1_hour_or = WebDriverWait(driver, 60*60+60) # waits for one hour and one minute for page refresh delay
-#driver.implicitly_wait(10) # seconds
 
+# define thw waiters
+wait_1_min_or = WebDriverWait(driver, 60)
+wait_1_hour_or = WebDriverWait(driver, 60*60+60) # waits for one hour and one minute for page 
 
 # Click on login tab
 wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div/nav/section/ul/li[10]/a')))
@@ -29,6 +30,15 @@ driver.find_element(By.XPATH, '//*[@id="push_notification_modal"]/div[1]/div[2]/
 # Close cookies warn
 wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div/a[1]')))
 driver.find_element(By.XPATH, '/html/body/div[1]/div/a[1]').click()
+
+
+
+# TODO click on mutiply BTC Tab
+
+# TODO check atual balance
+
+# TODO bet logic
+
 
 
 while(True):
