@@ -7,14 +7,14 @@
 
 ## Use Instructions
 
-  * Requirements *
+  * **Requirements**
     - Instaled Google Chrome Browser.
     - Download Chrome Webdriver for your Chrome version. [Chrome Webdriver Download](https://chromedriver.chromium.org/downloads)
   
   1. Copy the chromedriver.exe file to the Drivers folder
   2. Open the config.py file to setup your login, password and the budget. Use a budget in the form of x^2-1 will give an exact value to win or lose budget.
 
-  *You have 3 options to start the bot:*
+  * **You have 3 options to start the bot:**
     1. Run the bot.py file
     2. Run the start.bat file (need the prompt active to work)
     3. Run the run.vbs file (only opensthe browser)
