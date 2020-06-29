@@ -1,4 +1,6 @@
 .vscode
+__pycache__
+Drivers/chromedriver.exe
 
 login_info.py
 login_info.pyc
