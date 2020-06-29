@@ -1,0 +1,4 @@
+.vscode
+__pycache__/
+Drivers/chromedriver.exe
+debug.log
