@@ -1,16 +1,25 @@
 from time import sleep
-from login import user, password 
+from login_info import user, password 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
+def bet_choice(flag):
+        if(flag):
+                wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="double_your_btc_bet_lo_button"]')))
+                return driver.find_element(By.XPATH, '//*[@id="double_your_btc_bet_lo_button"]')
+        wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="double_your_btc_bet_hi_button"]')))
+        return driver.find_element(By.XPATH, '//*[@id="double_your_btc_bet_hi_button"]')
+                
+
 # start the browser
-driver = webdriver.Chrome('drivers\chromedriver')
+driver = webdriver.Chrome('./Drivers/chromedriver_win32 v_83/chromedriver.exe')
 driver.get("https://freebitco.in/?op=home#")
 driver.maximize_window()
 
-# define thw waiters
+# define the waiters
 wait_1_min_or = WebDriverWait(driver, 60)
 wait_1_hour_or = WebDriverWait(driver, 60*60+60) # waits for one hour and one minute for page 
 
@@ -32,40 +41,48 @@ wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div
 driver.find_element(By.XPATH, '/html/body/div[1]/div/a[1]').click()
 
 
+# click on mutiply tab
+wait_1_min_or.until(EC.element_to_be_clickable((By.CLASS_NAME, 'double_your_btc_link')))
+driver.find_element(By.CLASS_NAME, 'double_your_btc_link').click()
 
-# TODO click on mutiply BTC Tab
+# check initial balance
+wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="balance"]')))
+initial_balance = float(driver.find_element(By.XPATH, '//*[@id="balance"]').text)
 
-# TODO check atual balance
+prev_balance = actual_balance = initial_balance
 
-# TODO bet logic
+bet_flag = True
+time = 1
+
+while(abs(actual_balance-initial_balance) <= 0.00000512):
+
+        bet_choice(bet_flag).click()
 
 
-
-while(True):
-
-        driver.refresh()
-        # Click free roll
-        wait_1_hour_or.until(EC.element_to_be_clickable((By.ID, 'free_play_form_button')))
-        driver.find_element(By.ID, 'free_play_form_button').click()
-
-        # Close mutiply BTC pop-up
-        try:
-                wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="myModal22"]/a')))
-                driver.find_element(By.XPATH, '//*[@id="myModal22"]/a').click()
-        except:
-                pass
-
-        try:
-                wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="play_without_captchas_button"]/span')))
-                driver.find_element(By.XPATH, '//*[@id="play_without_captchas_button"]/span').click()
-
-        except:
-                pass
-
-        try:
-                wait_1_min_or.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="free_play_link_li"]/a')))
-                driver.find_element(By.XPATH, '//*[@id="free_play_link_li"]/a').click()
-
-        except:
-                pass
+        wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="balance"]')))
+        actual_balance = float(driver.find_element(By.XPATH, '//*[@id="balance"]').text)
         
+        if(actual_balance > prev_balance):
+                bet_flag = not bet_flag
+                wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="double_your_btc_min"]')))
+                driver.find_element(By.XPATH, '//*[@id="double_your_btc_min"]').click()
+                time = 1
+        else:
+                wait_1_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="double_your_btc_2x"]')))
+                driver.find_element(By.XPATH, '//*[@id="double_your_btc_2x"]').click() 
+                time = time*5 
+        prev_balance = actual_balance
+        
+        sleep(time)
+
+        # //*[@id="balance"]
+        # //*[@id="double_your_btc_2x"]
+        # //*[@id="double_your_btc_min"]
+
+        # //*[@id="double_your_btc_bet_lo_button"]
+        # //*[@id="double_your_btc_bet_hi_button"]
+
+if(actual_balance > initial_balance):
+        print('YOU WIN!')
+else:
+        print('Sorry, you lose.')
