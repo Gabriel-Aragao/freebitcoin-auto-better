@@ -9,11 +9,11 @@
 
   * **Requirements**
     - Instaled Google Chrome Browser.
-    - Download Chrome Webdriver for your Chrome version. [Chrome Webdriver Download](https://chromedriver.chromium.org/downloads)
+    - Download Chrome Webdriver according to your Chrome version. [Chrome Webdriver Download](https://chromedriver.chromium.org/downloads)
     - Python 3.x. [Python Download](https://www.python.org/downloads/)
     - Active account on the Freebiicoin site, you can create an account [here](https://freebitco.in/?r=8521028)
   
-  1. Copy the chromedriver.exe file to the Drivers folder
+  1. Replace the downloaded chromedriver.exe file into the Drivers folder
   2. Open the config.py file to set up your login, password, and the budget. Use a budget in the form of x^2-1 will give an exact value to win or lose the budget.
   3. Open CMD on the project folder and run de command **pip3 install -r requirements.txt**  
 
@@ -21,6 +21,8 @@
     1. Run the bot.py file
     2. Run the start.bat file (the command prompt will remain active)
     3. Run the run.vbs file (only opens the browser)
+    
+    The bot may take some time to start.
   
   You also could put the run.vbs file in the Windows's starts folder to start the bot with the system boot.
   
