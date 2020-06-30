@@ -11,6 +11,7 @@
     - Instaled Google Chrome Browser.
     - Download Chrome Webdriver for your Chrome version. [Chrome Webdriver Download](https://chromedriver.chromium.org/downloads)
     - Python 3.x. [Python Download](https://www.python.org/downloads/)
+    - Active account on the Freebiicoin site, you can create an account [here](https://freebitco.in/?r=8521028)
   
   1. Copy the chromedriver.exe file to the Drivers folder
   2. Open the config.py file to set up your login, password, and the budget. Use a budget in the form of x^2-1 will give an exact value to win or lose the budget.
