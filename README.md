@@ -7,14 +7,14 @@
 
 ## Use Instructions
 
-  * **Requirements** *
+  * **Requirements**
     - Instaled Google Chrome Browser.
     - Download Chrome Webdriver for your Chrome version. [Chrome Webdriver Download](https://chromedriver.chromium.org/downloads)
     - Python 3.x. [Python Download](https://www.python.org/downloads/)
   
   1. Copy the chromedriver.exe file to the Drivers folder
   2. Open the config.py file to setup your login, password and the budget. Use a budget in the form of x^2-1 will give an exact value to win or lose budget.
-  3. Open CMD on the project folder and run de command *  
+  3. Open CMD on the project folder and run de command **pip3 install -r requirements.txt**  
 
   * **You have 3 options to start the bot:**
     1. Run the bot.py file
