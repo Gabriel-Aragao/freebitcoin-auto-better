@@ -61,8 +61,6 @@ class FreebitcoinDriver:
 
     while(abs(actual_balance-initial_balance) <= budget):
 
-      sleep(time)
-      
       self.wait_a_min_or.until(EC.presence_of_element_located((By.XPATH, '//*[@id="balance"]')))
       actual_balance = Decimal(self.driver.find_element(By.XPATH, '//*[@id="balance"]').text)
       
@@ -77,6 +75,7 @@ class FreebitcoinDriver:
         time = time*5 
         
       self.bet_choice(bet_flag).click()
+      sleep(time)
       prev_balance = actual_balance
             
 
